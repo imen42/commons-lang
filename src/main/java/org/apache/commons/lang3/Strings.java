@@ -22,6 +22,8 @@ import static org.apache.commons.lang3.StringUtils.INDEX_NOT_FOUND;
 import org.apache.commons.lang3.builder.AbstractSupplier;
 import org.apache.commons.lang3.function.ToBooleanBiFunction;
 
+import java.util.Objects;
+
 /**
  * String operations where you choose case-sensitive {@link #CS} vs. case-insensitive {@link #CI} through a singleton instance.
  *
@@ -96,7 +98,7 @@ public abstract class Strings {
 
         @Override
         public int compare(final String s1, final String s2) {
-            if (s1 == s2) {
+            if (Objects.equals(s1, s2)) {
                 // Both null or same object
                 return 0;
             }
@@ -203,7 +205,7 @@ public abstract class Strings {
 
         @Override
         public int compare(final String s1, final String s2) {
-            if (s1 == s2) {
+            if (Objects.equals(s1, s2)) {
                 // Both null or same object
                 return 0;
             }
