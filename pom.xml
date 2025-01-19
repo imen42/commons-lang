@@ -277,18 +277,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
+        <version>3.2.2</version>
         <configuration>
-          <archive combine.children="append">
-            <manifestEntries>
-              <Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
-            </manifestEntries>
+          <archive>
+            <manifest>
+              <!-- Replace this with the fully qualified name of your main class -->
+              <mainClass>org.apache.commons.lang3.App</mainClass>
+            </manifest>
           </archive>
         </configuration>
       </plugin>
@@ -424,7 +419,46 @@
         </file>
       </activation>
       <build>
+
         <plugins>
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <dependencies>
+              <dependency>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-junit5-plugin</artifactId>
+                <version>1.2.1</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <threads>8</threads>
+            </configuration>
+          </plugin>
+
+
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.10</version> <!-- Use the latest version -->
+            <executions>
+              <!-- Default execution for test coverage -->
+              <execution>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+
+              <execution>
+                <id>report</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-antrun-plugin</artifactId>
@@ -449,6 +483,7 @@
                       <dirset dir="${commons.scmPubCheckoutDirectory}" includes="*" />
                     </pathconvert>
                     <exec executable="svn">
+                      <!--suppress UnresolvedMavenProperty -->
                       <arg line="update --set-depth infinity ${dirs}" />
                     </exec>
                   </target>

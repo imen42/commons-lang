@@ -172,6 +172,9 @@ public class Conversion {
         byte out = dstInit;
         for (int i = 0; i < nBools; i++) {
             final int shift = i + dstPos;
+            if (i + srcPos >= src.length) {
+                throw new ArrayIndexOutOfBoundsException("Index out of bounds: " + (i + srcPos));
+            }
             final int bits = (src[i + srcPos] ? 1 : 0) << shift;
             final int mask = 0x1 << shift;
             out = (byte) (out & ~mask | bits);
