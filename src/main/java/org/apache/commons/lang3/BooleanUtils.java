@@ -739,7 +739,7 @@ public class BooleanUtils {
         // Optimisation provides same performance as before for interned 'true'.
         // Similar performance for null, 'false', and other strings not length 2/3/4.
         // 'true'/'TRUE' match 4 times slower, 'tRUE'/'True' 7 times slower.
-        if (str == TRUE) {
+        if (Objects.equals(str, TRUE)) {
             return Boolean.TRUE;
         }
         if (str == null) {
@@ -924,7 +924,7 @@ public class BooleanUtils {
         if (bool == null) {
             return nullValue;
         }
-        return bool.booleanValue() ? trueValue : falseValue;
+        return bool ? trueValue : falseValue;
     }
 
     /**
