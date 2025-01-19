@@ -351,8 +351,5 @@ public class AnnotationUtils {
      * instance to operate.</p>
      * @deprecated TODO Make private in 4.0.
      */
-    @Deprecated
-    private AnnotationUtils() {
-        // empty
-    }
+
 }
