@@ -339,17 +339,22 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      */
     @Override
     public synchronized boolean isInitialized() {
-        if (future == null || ! future.isDone()) {
+        if (future == null || !future.isDone()) {
             return false;
         }
-
         try {
             future.get();
             return true;
-        } catch (CancellationException | ExecutionException | InterruptedException e) {
+        } catch (CancellationException | ExecutionException e) {
+            // Handle CancellationException and ExecutionException gracefully
+            return false;
+        } catch (InterruptedException e) {
+            // Restore the interrupt status for proper thread handling
+            Thread.currentThread().interrupt();
             return false;
         }
     }
+
 
     /**
      * Returns a flag whether this {@link BackgroundInitializer} has already
