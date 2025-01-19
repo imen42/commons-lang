@@ -352,7 +352,7 @@ public class AnnotationUtils {
      * @deprecated TODO Make private in 4.0.
      */
     @Deprecated
-    public AnnotationUtils() {
+    private AnnotationUtils() {
         // empty
     }
 }
