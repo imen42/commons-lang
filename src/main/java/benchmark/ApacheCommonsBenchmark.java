@@ -14,29 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-package org.apache.commons.lang3.Benchmarks;
-
+package benchmark;
 import org.apache.commons.lang3.StringUtils;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.Throughput) // Measures operations per unit of time
-@OutputTimeUnit(TimeUnit.MILLISECONDS) // Results in milliseconds
-@State(Scope.Thread) // Independent state for each thread
-public class BenchmarkExample {
+@OutputTimeUnit(TimeUnit.MILLISECONDS) // Outputs results in milliseconds
+@State(Scope.Thread) // Each thread gets its own state instance
+public class ApacheCommonsBenchmark {
 
-    private String text;
+    private String testString;
 
-    @Setup(Level.Iteration) // Setup before each benchmark iteration
+    @Setup(Level.Iteration) // Initialize before each iteration
     public void setup() {
-        text = "This is a sample text for benchmarking purposes.";
+        testString = "Apache Commons Langs JMH Benchmarking Example";
     }
 
     @Benchmark
-    public String reverseString() {
-        return StringUtils.reverse(text);
+    public boolean testIsNotEmpty() {
+        return StringUtils.isNotEmpty(testString);
+    }
+
+    @Benchmark
+    public String testReverse() {
+        return StringUtils.reverse(testString);
     }
 }

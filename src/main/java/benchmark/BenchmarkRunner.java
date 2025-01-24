@@ -14,10 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.lang3;
+package benchmark;
 
-public class App {
-    public static void main(String[] args) {
-        System.out.println("app main !");
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
+
+public class BenchmarkRunner {
+    public static void main(String[] args) throws Exception {
+        Options opt = new OptionsBuilder()
+                .include(ApacheCommonsBenchmark.class.getSimpleName()) // Match this class
+                .forks(1) // Number of forked JVM processes
+                .build();
+
+        new Runner(opt).run();
     }
 }
