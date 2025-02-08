@@ -14,6 +14,7 @@
 # limitations under the License.
 
 # Use an official Java runtime as a base image
+# Use an official Java runtime as a base image
 FROM openjdk:17-jdk-slim
 
 # Set the working directory inside the container
@@ -21,8 +22,9 @@ WORKDIR /app
 
 # Copy the Maven build output (JAR file) into the container
 COPY target/commons-lang3-3.18.0-SNAPSHOT.jar app.jar
+
 # Expose the port your application will use
 EXPOSE 8080
 
 # Command to run the application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
