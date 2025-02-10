@@ -485,39 +485,18 @@
       <build>
 
         <plugins>
-<!--          <plugin>-->
-<!--            <groupId>org.pitest</groupId>-->
-<!--            <artifactId>pitest-maven</artifactId>-->
-<!--            <version>1.15.3</version> &lt;!&ndash; Updated to match the Gradle version &ndash;&gt;-->
-<!--            <configuration>-->
-<!--              <targetClasses>org.apache.commons.lang3.*</targetClasses> &lt;!&ndash; All Commons Lang classes &ndash;&gt;-->
-<!--              <verbose>true</verbose> &lt;!&ndash; Enable detailed logs &ndash;&gt;-->
-<!--              <mutators>DEFAULTS</mutators>-->
-<!--            </configuration>-->
-<!--            <dependencies>-->
-<!--              <dependency>-->
-<!--                <groupId>org.pitest</groupId>-->
-<!--                <artifactId>pitest-junit5-plugin</artifactId>-->
-<!--                <version>1.2.1</version> &lt;!&ndash; JUnit 5 plugin version &ndash;&gt;-->
-<!--              </dependency>-->
-<!--            </dependencies>-->
-<!--          </plugin>--><!--          <plugin>-->
-<!--            <groupId>org.pitest</groupId>-->
-<!--            <artifactId>pitest-maven</artifactId>-->
-<!--            <version>1.15.3</version> &lt;!&ndash; Updated to match the Gradle version &ndash;&gt;-->
-<!--            <configuration>-->
-<!--              <targetClasses>org.apache.commons.lang3.*</targetClasses> &lt;!&ndash; All Commons Lang classes &ndash;&gt;-->
-<!--              <verbose>true</verbose> &lt;!&ndash; Enable detailed logs &ndash;&gt;-->
-<!--              <mutators>DEFAULTS</mutators>-->
-<!--            </configuration>-->
-<!--            <dependencies>-->
-<!--              <dependency>-->
-<!--                <groupId>org.pitest</groupId>-->
-<!--                <artifactId>pitest-junit5-plugin</artifactId>-->
-<!--                <version>1.2.1</version> &lt;!&ndash; JUnit 5 plugin version &ndash;&gt;-->
-<!--              </dependency>-->
-<!--            </dependencies>-->
-<!--          </plugin>-->
+          <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.15.2</version>
+            <dependencies>
+              <dependency>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-junit5-plugin</artifactId>
+                <version>1.2.0</version>
+              </dependency>
+            </dependencies>
+          </plugin>
 
 
           <plugin>
